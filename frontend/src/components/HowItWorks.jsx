@@ -70,7 +70,7 @@ const HowItWorks = () => {
   };
 
   return (
-    <section className="py-16 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-indigo-900 relative overflow-hidden">
+    <section className="py-16 bg-mesh-light dark:bg-mesh-dark relative overflow-hidden">
       {/* Background SVG */}
       <svg className="absolute top-0 left-0 w-full h-full opacity-10" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -82,8 +82,9 @@ const HowItWorks = () => {
       </svg>
 
       <div className="container mx-auto px-4 relative z-10">
+        <p className="text-sm font-semibold text-red-600 dark:text-red-400 tracking-widest uppercase text-center mb-2">Process</p>
         <motion.h2 
-          className="text-4xl md:text-5xl font-bold text-center mb-12 text-indigo-800 dark:text-indigo-300"
+          className="text-4xl md:text-5xl font-bold text-center mb-12 text-gray-900 dark:text-white"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -100,7 +101,7 @@ const HowItWorks = () => {
           {steps.map((step, index) => (
             <motion.div 
               key={index} 
-              className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-2xl shadow-lg p-6 transform hover:scale-105 transition-transform duration-300 relative overflow-hidden"
+              className="glass-card rounded-2xl p-6 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden"
               variants={itemVariants}
             >
               <motion.div
@@ -111,7 +112,7 @@ const HowItWorks = () => {
                 {step.bgSvg}
               </motion.div>
               <motion.div 
-                className="flex justify-center mb-4 text-indigo-600 dark:text-indigo-400 relative z-10"
+                className="flex justify-center mb-4 text-red-600 dark:text-red-400 relative z-10"
                 whileHover={{ rotate: 360 }}
                 transition={{ duration: 0.5 }}
               >
@@ -120,7 +121,7 @@ const HowItWorks = () => {
               <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200 relative z-10">{step.title}</h3>
               <p className="text-gray-600 dark:text-gray-300 relative z-10">{step.description}</p>
               <motion.div
-                className="absolute bottom-2 right-2 w-8 h-8 bg-indigo-500 rounded-full flex items-center justify-center text-white font-bold"
+                className="absolute bottom-2 right-2 w-8 h-8 bg-red-600 rounded-full flex items-center justify-center text-white font-bold text-sm"
                 whileHover={{ scale: 1.2, rotate: 90 }}
                 transition={{ type: "spring", stiffness: 260, damping: 20 }}
               >
@@ -137,7 +138,7 @@ const HowItWorks = () => {
           transition={{ delay: 0.5 }}
         >
           <motion.button
-            className="bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold text-lg shadow-lg hover:bg-indigo-700 transition-colors duration-300"
+            className="bg-red-600 text-white px-8 py-3 rounded-full font-semibold text-lg shadow-lg hover:bg-red-700 transition-colors duration-300 red-glow"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

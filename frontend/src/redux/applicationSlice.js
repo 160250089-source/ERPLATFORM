@@ -23,7 +23,7 @@ export const fetchApplicants = createAsyncThunk(
     try {
       const url = jobId 
         ? `${APPLICATION_API_END_POINT}/job/${jobId}`
-        : APPLICATION_API_END_POINT
+        : `${APPLICATION_API_END_POINT}/get`
       
       console.log("Fetching applicants from URL:", url);
       

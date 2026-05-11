@@ -28,7 +28,7 @@ const CompaniesTable = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className='bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden'
+            className='glass-card rounded-2xl overflow-hidden'
         >
             <Table>
                 <TableCaption>A list of your registered companies</TableCaption>
@@ -60,7 +60,7 @@ const CompaniesTable = () => {
                                 </div>
                             </TableCell>
                             <TableCell>
-                                <a href={company.website} target="_blank" rel="noopener noreferrer" className="flex items-center text-blue-500 hover:underline">
+                                <a href={company.website} target="_blank" rel="noopener noreferrer" className="flex items-center text-red-500 hover:underline">
                                     {company.website} <ExternalLink className="ml-1 w-4 h-4" />
                                 </a>
                             </TableCell>

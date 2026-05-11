@@ -7,7 +7,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 const genAI = new GoogleGenerativeAI(API_KEY);
 
-const INITIAL_MESSAGE = "Hello! I'm JobLynk's AI assistant. How can I help you with job searching or career advice?";
+const INITIAL_MESSAGE = "Hello! I'm prep4Job's AI assistant. How can I help you with job searching or career advice?";
 
 const AIAssistant = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,7 +40,7 @@ const AIAssistant = () => {
       if (!API_KEY) throw new Error("API key is not set");
 
       const model = genAI.getGenerativeModel({ model: "gemini-pro"});
-      const prompt = `You are a concise AI assistant for JobLynk, a job search platform. Respond to this question in 2-3 short sentences: ${input}`;
+      const prompt = `You are a concise AI assistant for prep4Job, a job search platform. Respond to this question in 2-3 short sentences: ${input}`;
       
       const result = await model.generateContent(prompt);
       const response = await result.response;
@@ -97,12 +97,12 @@ const AIAssistant = () => {
             className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl w-[92vw] sm:w-[400px] mb-2 sm:mb-4 overflow-hidden border border-gray-200 dark:border-gray-700"
           >
             {/* Header */}
-            <div className="p-2 sm:p-4 bg-gradient-to-r from-blue-500 to-blue-600">
+            <div className="p-2 sm:p-4 bg-red-600">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
                   <Bot size={20} className="text-white sm:hidden" />
                   <Bot size={24} className="text-white hidden sm:block" />
-                  <h3 className="text-base sm:text-lg font-semibold text-white">JobLynk AI Assistant</h3>
+                  <h3 className="text-base sm:text-lg font-semibold text-white">prep4Job AI Assistant</h3>
                 </div>
                 <button 
                   onClick={() => setIsOpen(false)} 
@@ -151,13 +151,13 @@ const AIAssistant = () => {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && !isLoading && handleSend()}
                   placeholder="Type your message..."
-                  className="flex-1 px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base rounded-full border border-gray-200 dark:border-gray-600 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all"
+                  className="flex-1 px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base rounded-full border border-gray-200 dark:border-gray-600 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-red-500 dark:focus:ring-red-400 transition-all"
                   disabled={isLoading}
                 />
                 <button 
                   onClick={handleSend} 
                   disabled={isLoading || !input.trim()}
-                  className="p-1.5 sm:p-2 rounded-full bg-blue-500 text-white disabled:opacity-50 disabled:cursor-not-allowed hover:bg-blue-600 transition-colors"
+                  className="p-1.5 sm:p-2 rounded-full bg-red-600 text-white disabled:opacity-50 disabled:cursor-not-allowed hover:bg-red-700 transition-colors"
                 >
                   <Send size={16} className="sm:hidden" />
                   <Send size={20} className="hidden sm:block" />
@@ -179,7 +179,7 @@ const AIAssistant = () => {
           animate={{
             rotate: isOpen ? 180 : 0
           }}
-          className="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-3 sm:p-4 rounded-full shadow-lg hover:shadow-xl transition-shadow"
+          className="bg-red-600 text-white p-3 sm:p-4 rounded-full shadow-lg hover:shadow-xl transition-shadow"
         >
           <MessageCircle size={20} className="sm:hidden" />
           <MessageCircle size={24} className="hidden sm:block" />

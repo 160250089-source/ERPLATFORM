@@ -20,7 +20,7 @@ const AdminJobs = () => {
   }, [input]);
 
   return (
-    <div className='dark:bg-gray-900 bg-gray-50 min-h-screen'>
+    <div className='bg-mesh-light dark:bg-mesh-dark min-h-screen'>
       <motion.div 
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}

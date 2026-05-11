@@ -12,9 +12,12 @@ import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
   useGetAllJobs();
+
+  console.log("Home rendered");
   const { user } = useSelector(store => store.auth);
+  console.log(user)
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     if (user?.role === 'recruiter') {
       navigate("/admin/companies");
@@ -57,13 +60,15 @@ const Home = () => {
   };
 
   return (
-    <motion.div 
+    <motion.div
       variants={pageVariants}
       initial="initial"
       animate="animate"
-      className="relative min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 text-gray-900 dark:text-white overflow-hidden"
+      className="relative min-h-screen bg-mesh-light dark:bg-mesh-dark text-gray-900 dark:text-gray-100 overflow-hidden"
     >
       {/* Decorative Elements */}
+
+      
       <motion.div
         variants={decorativeVariants}
         animate="animate"
@@ -80,21 +85,21 @@ const Home = () => {
         <HeroSection />
       </motion.div>
 
-      <motion.div 
+      <motion.div
         variants={sectionVariants}
-        className="relative bg-white/50 dark:bg-gray-800/50 backdrop-blur-lg "
+        className="relative glass-card"
       >
         <HowItWorks />
       </motion.div>
 
       <motion.div variants={sectionVariants}
-       className="relative bg-white/50 dark:bg-gray-800/50 backdrop-blur-lg ">
+        className="relative glass-card">
         <CategoryCarousel />
       </motion.div>
 
-      <motion.div 
+      <motion.div
         variants={sectionVariants}
-        className="relative bg-white/50 dark:bg-gray-800/50 backdrop-blur-lg "
+        className="relative glass-card"
       >
         <LatestJobs />
       </motion.div>

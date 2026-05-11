@@ -3,10 +3,11 @@ import Navbar from './shared/Navbar'
 import Job from './Job';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSearchedQuery } from '@/redux/jobSlice';
-import useGetAllJobs from '@/hooks/useGetAllJobs';
+
 import { Input } from './ui/input';
 import { Search, MapPin, BriefcaseIcon, IndianRupeeIcon, ChevronDown, ChevronUp } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
+import useGetAllJobs from '@/hooks/useGetAllJobs';
 
 // const randomJobs = [1, 2,45];
 
@@ -15,7 +16,7 @@ const Browse = () => {
     const { allJobs } = useSelector(store => store.job);
     
     // Initialize jobs loading
-    useGetAllJobs();
+    useGetAllJobs()
 
     // Filter states with error handling
     const [searchQuery, setSearchQuery] = useState('');
@@ -120,7 +121,7 @@ const Browse = () => {
     }, [dispatch]);
 
     return (
-        <div className='text-[#1E2A5E] dark:bg-gray-900 dark:text-white min-h-screen'>
+        <div className='bg-mesh-light dark:bg-mesh-dark text-gray-900 dark:text-gray-100 min-h-screen'>
             <div className='max-w-7xl md:mx-10 mx-4'>
                 {/* Search and Filters Section */}
                 <div className="py-8 space-y-6">
@@ -139,7 +140,7 @@ const Browse = () => {
                     {/* Mobile Filter Toggle */}
                     <button
                         onClick={() => setShowMobileFilters(!showMobileFilters)}
-                        className="w-full md:hidden flex items-center justify-between px-4 py-2 bg-white dark:bg-gray-800 rounded-lg border border-gray-300 dark:border-gray-700"
+                        className="w-full md:hidden flex items-center justify-between px-4 py-2 glass rounded-xl border border-gray-200 dark:border-gray-700"
                     >
                         <span className="font-medium">Filters</span>
                         {showMobileFilters ? (
@@ -213,7 +214,7 @@ const Browse = () => {
 
                 {/* Results Section */}
                 <div>
-                    <h1 className='font-bold text-xl pb-6'>
+                    <h1 className='font-bold text-xl pb-6 text-gray-900 dark:text-white'>
                         Search Results ({filteredJobs?.length || 0})
                         {(searchQuery || location || jobType || salaryRange) && 
                             <span className="text-gray-500 text-sm ml-2">

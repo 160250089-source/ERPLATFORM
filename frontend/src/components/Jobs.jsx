@@ -10,7 +10,7 @@ import { motion } from 'framer-motion';
 const Jobs = () => {
     const { allJobs, searchedQuery } = useSelector(store => store.job);
     const [filterJobs, setFilterJobs] = useState(allJobs);
-
+    console.log(filterJobs)
     useEffect(() => {
         if (searchedQuery) {
             const filteredJobs = allJobs.filter((job) => {
@@ -18,9 +18,11 @@ const Jobs = () => {
                     job.description.toLowerCase().includes(searchedQuery.toLowerCase()) ||
                     job.location.toLowerCase().includes(searchedQuery.toLowerCase())
             })
+            console.log(filteredJobs)
             setFilterJobs(filteredJobs)
         } else {
             setFilterJobs(allJobs)
+            // console.log(allJobs)
         }
     }, [allJobs, searchedQuery]);
 

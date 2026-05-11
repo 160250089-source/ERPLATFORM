@@ -31,7 +31,7 @@ const AdminJobsTable = ({ onJobClick }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className='bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden'
+            className='glass-card rounded-2xl overflow-hidden'
         >
             <Table>
                 <TableCaption>A list of your recently posted jobs</TableCaption>

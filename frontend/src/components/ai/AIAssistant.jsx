@@ -34,24 +34,24 @@ const Message = ({ type, content }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
-    className={`flex items-start gap-3 ${type === 'user' ? 'flex-row-reverse' : ''} mb-3`}
+    className={`flex items-start gap-4 ${type === 'user' ? 'flex-row-reverse' : ''} mb-6`}
   >
-    <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
-      type === 'user' ? 'bg-blue-500' : 'bg-purple-500'
+    <div className={`flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center ${
+      type === 'user' ? 'bg-red-600 shadow-lg shadow-red-500/20' : 'bg-gray-800 shadow-lg'
     }`}>
       {type === 'user' ? (
-        <User className="w-4 h-4 text-white" />
+        <User className="w-5 h-5 text-white" />
       ) : (
-        <Bot className="w-4 h-4 text-white" />
+        <Bot className="w-5 h-5 text-white" />
       )}
     </div>
-    <div className={`flex-1 max-w-[85%] ${type === 'user' ? 'text-right' : 'text-left'}`}>
-      <div className={`inline-block p-2.5 rounded-xl ${
+    <div className={`flex-1 max-w-[80%] ${type === 'user' ? 'text-right' : 'text-left'}`}>
+      <div className={`inline-block px-5 py-3 rounded-2xl ${
         type === 'user' 
-          ? 'bg-blue-500 text-white' 
-          : 'bg-white dark:bg-gray-800 shadow-lg'
+          ? 'bg-red-600 text-white shadow-xl shadow-red-500/10' 
+          : 'glass-card border-white/5'
       }`}>
-        <p className="text-sm whitespace-pre-wrap">{content}</p>
+        <p className="text-[15px] leading-relaxed whitespace-pre-wrap">{content}</p>
       </div>
     </div>
   </motion.div>
@@ -108,102 +108,111 @@ const AIAssistant = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-6 px-3 sm:px-4 lg:px-6">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen bg-mesh-light dark:bg-mesh-dark py-12 px-4 sm:px-6">
+      <div className="max-w-5xl mx-auto space-y-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-4"
+          className="text-center space-y-4"
         >
-          <div className="inline-flex items-center px-3 py-1.5 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900 dark:to-purple-900 mb-3">
-            <Sparkles className="w-4 h-4 text-blue-600 dark:text-blue-400 mr-1.5" />
-            <span className="text-sm font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Powered by Gemini AI
+          <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 mb-2">
+            <Sparkles className="w-4 h-4 text-red-600 mr-2 animate-pulse" />
+            <span className="text-xs font-bold text-red-600 tracking-widest uppercase">
+              Powered by Prep4Job AI
             </span>
           </div>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
-            AI Career Assistant
+          <h1 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white tracking-tight">
+            AI Career <span className="text-red-600">Assistant</span>
           </h1>
-          <p className="text-gray-600 dark:text-gray-300 text-sm">
-            Get personalized career guidance, resume tips, and interview preparation help
+          <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
+            Get personalized guidance, resume reviews, and interview prep with our state-of-the-art AI.
           </p>
         </motion.div>
 
-        {/* Suggestion Prompts */}
-        <div className="mb-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-            {suggestionPrompts.map((category, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.1 }}
-                className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl p-3 shadow-lg border border-white/20"
-              >
-                <h3 className="text-base font-semibold mb-2 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  {category.title}
-                </h3>
-                <div className="space-y-1.5">
-                  {category.prompts.map((prompt, promptIdx) => (
-                    <button
-                      key={promptIdx}
-                      onClick={() => handleSuggestionClick(prompt)}
-                      className="w-full text-left text-sm p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
-                    >
-                      {prompt}
-                    </button>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* Suggestions Sidebar */}
+          <div className="lg:col-span-4 space-y-4 order-2 lg:order-1">
+             <h3 className="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest px-2">Suggestions</h3>
+             <div className="space-y-4">
+                {suggestionPrompts.map((category, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: idx * 0.1 }}
+                    className="glass-card p-4 rounded-2xl border-white/5"
+                  >
+                    <h4 className="text-[15px] font-bold text-red-600 mb-3 flex items-center">
+                       <span className="w-1.5 h-1.5 bg-red-600 rounded-full mr-2"></span>
+                       {category.title}
+                    </h4>
+                    <div className="flex flex-col gap-2">
+                      {category.prompts.map((prompt, promptIdx) => (
+                        <button
+                          key={promptIdx}
+                          onClick={() => handleSuggestionClick(prompt)}
+                          className="text-left text-sm text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors p-2 rounded-xl hover:bg-red-500/5"
+                        >
+                          {prompt}
+                        </button>
+                      ))}
+                    </div>
+                  </motion.div>
+                ))}
+             </div>
+          </div>
+
+          {/* Main Chat Area */}
+          <div className="lg:col-span-8 order-1 lg:order-2">
+            <div className="glass-card rounded-3xl flex flex-col h-[700px] border-white/5 overflow-hidden shadow-2xl">
+              {/* Messages Area */}
+              <div className="flex-1 overflow-y-auto p-6 md:p-8 space-y-2 scrollbar-hide">
+                <AnimatePresence>
+                  {messages.map((message, idx) => (
+                    <Message key={idx} type={message.type} content={message.content} />
                   ))}
+                  {loading && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      className="flex items-center gap-3 text-gray-500 dark:text-gray-400"
+                    >
+                      <div className="w-10 h-10 rounded-xl bg-gray-800 flex items-center justify-center">
+                        <Loader2 className="w-5 h-5 animate-spin text-red-600" />
+                      </div>
+                      <span className="text-sm font-medium animate-pulse">Assistant is thinking...</span>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+                <div ref={messagesEndRef} />
+              </div>
+
+              {/* Input Area */}
+              <div className="p-4 bg-white/5 border-t border-white/5 backdrop-blur-xl">
+                <div className="relative group">
+                  <textarea
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    onKeyPress={handleKeyPress}
+                    placeholder="Ask anything about your career..."
+                    className="w-full bg-white/50 dark:bg-gray-900/50 rounded-2xl p-5 pr-16 focus:ring-2 focus:ring-red-500 border-white/10 dark:text-white resize-none text-base placeholder:text-gray-500 transition-all"
+                    rows="2"
+                  />
+                  <button
+                    onClick={handleSend}
+                    disabled={loading || !input.trim()}
+                    className={`absolute right-3 bottom-3 p-3 rounded-xl transition-all ${
+                      loading || !input.trim()
+                        ? 'bg-gray-200 dark:bg-gray-800 cursor-not-allowed opacity-50'
+                        : 'bg-red-600 hover:bg-red-700 text-white red-glow shadow-lg'
+                    }`}
+                  >
+                    <Send className="w-5 h-5" />
+                  </button>
                 </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* Chat Container */}
-        <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl shadow-lg p-3 md:p-4 border border-white/20">
-          {/* Messages */}
-          <div className="h-[450px] overflow-y-auto mb-3 px-2 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600">
-            <AnimatePresence>
-              {messages.map((message, idx) => (
-                <Message key={idx} type={message.type} content={message.content} />
-              ))}
-              {loading && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="flex items-center space-x-1.5 text-gray-500"
-                >
-                  <Loader2 className="w-4 h-4 animate-spin" />
-                  <span className="text-sm">Thinking...</span>
-                </motion.div>
-              )}
-            </AnimatePresence>
-            <div ref={messagesEndRef} />
-          </div>
-
-          {/* Input */}
-          <div className="relative">
-            <textarea
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyPress={handleKeyPress}
-              placeholder="Type your message..."
-              className="w-full p-3 pr-10 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none text-sm"
-              rows="2"
-            />
-            <button
-              onClick={handleSend}
-              disabled={loading || !input.trim()}
-              className={`absolute right-2 bottom-2 p-1.5 rounded-lg ${
-                loading || !input.trim()
-                  ? 'bg-gray-200 dark:bg-gray-700 cursor-not-allowed'
-                  : 'bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700'
-              } transition-colors duration-200`}
-            >
-              <Send className="w-4 h-4 text-white" />
-            </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

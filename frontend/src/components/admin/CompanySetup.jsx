@@ -92,103 +92,104 @@ const CompanySetup = () => {
     },[singleCompany]);
 
     return (
-        <div className='bg-gray-50 dark:bg-gray-900 min-h-screen pt-20'>
-           
+        <div className='bg-mesh-light dark:bg-mesh-dark min-h-screen pt-16'>
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 className='max-w-2xl mx-auto px-4 py-8'
             >
-                <div className='bg-white dark:bg-gray-800 rounded-lg shadow-xl p-8'>
-                    <div className='flex items-center mb-6'>
-                        <Building2 className="w-10 h-10 text-blue-500 mr-4" />
+                <div className='glass-card rounded-2xl p-8'>
+                    <div className='flex items-center mb-8'>
+                        <div className="bg-red-600 p-3 rounded-xl mr-5">
+                            <Building2 className="w-8 h-8 text-white" />
+                        </div>
                         <div>
-                            <h1 className='font-bold text-3xl text-gray-800 dark:text-white'>Company Setup</h1>
-                            <p className='text-gray-500 dark:text-gray-400 mt-1'>Update your company information</p>
+                            <p className="text-sm font-semibold text-red-600 dark:text-red-400 tracking-widest uppercase mb-1">Configuration</p>
+                            <h1 className='font-bold text-3xl text-gray-900 dark:text-white'>Company Setup</h1>
                         </div>
                     </div>
                     <form onSubmit={submitHandler} className='space-y-6'>
                         <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
-                            <div>
-                                <Label htmlFor="name" className="text-sm font-medium text-gray-700 dark:text-gray-300">Company Name</Label>
+                            <div className="space-y-2">
+                                <Label htmlFor="name" className="text-sm font-semibold text-gray-700 dark:text-gray-300">Company Name</Label>
                                 <Input 
                                     id="name"
-                                    className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white'
+                                    className='bg-white/50 dark:bg-gray-900/50 rounded-xl focus:ring-red-500 border-gray-200 dark:border-white/10 dark:text-white'
                                     type="text"
                                     name="name"
                                     value={input.name}
                                     onChange={changeEventHandler}
                                 />
-                                {errors.name && <span className="text-red-500 text-sm">{errors.name}</span>}
+                                {errors.name && <span className="text-red-500 text-xs">{errors.name}</span>}
                             </div>
-                            <div>
-                                <Label htmlFor="description" className="text-sm font-medium text-gray-700 dark:text-gray-300">Description</Label>
+                            <div className="space-y-2">
+                                <Label htmlFor="description" className="text-sm font-semibold text-gray-700 dark:text-gray-300">Description</Label>
                                 <Input
                                     id="description"
-                                    className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white'
+                                    className='bg-white/50 dark:bg-gray-900/50 rounded-xl focus:ring-red-500 border-gray-200 dark:border-white/10 dark:text-white'
                                     type="text"
                                     name="description"
                                     value={input.description}
                                     onChange={changeEventHandler}
                                 />
-                                {errors.description && <span className="text-red-500 text-sm">{errors.description}</span>}
+                                {errors.description && <span className="text-red-500 text-xs">{errors.description}</span>}
                             </div>
-                            <div>
-                                <Label htmlFor="website" className="text-sm font-medium text-gray-700 dark:text-gray-300">Website</Label>
+                            <div className="space-y-2">
+                                <Label htmlFor="website" className="text-sm font-semibold text-gray-700 dark:text-gray-300">Website URL</Label>
                                 <Input
                                     id="website"
-                                    className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white'
+                                    className='bg-white/50 dark:bg-gray-900/50 rounded-xl focus:ring-red-500 border-gray-200 dark:border-white/10 dark:text-white'
                                     type="text"
                                     name="website"
                                     value={input.website}
                                     onChange={changeEventHandler}
                                 />
-                                {errors.website && <span className="text-red-500 text-sm">{errors.website}</span>}
+                                {errors.website && <span className="text-red-500 text-xs">{errors.website}</span>}
                             </div>
-                            <div>
-                                <Label htmlFor="location" className="text-sm font-medium text-gray-700 dark:text-gray-300">Location</Label>
+                            <div className="space-y-2">
+                                <Label htmlFor="location" className="text-sm font-semibold text-gray-700 dark:text-gray-300">Location</Label>
                                 <Input
                                     id="location"
-                                    className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white'
+                                    className='bg-white/50 dark:bg-gray-900/50 rounded-xl focus:ring-red-500 border-gray-200 dark:border-white/10 dark:text-white'
                                     type="text"
                                     name="location"
                                     value={input.location}
                                     onChange={changeEventHandler}
                                 />
-                                {errors.location && <span className="text-red-500 text-sm">{errors.location}</span>}
+                                {errors.location && <span className="text-red-500 text-xs">{errors.location}</span>}
                             </div>
                         </div>
-                        <div>
-                            <Label htmlFor="logo" className="text-sm font-medium text-gray-700 dark:text-gray-300">Logo</Label>
+                        <div className="space-y-2">
+                            <Label htmlFor="logo" className="text-sm font-semibold text-gray-700 dark:text-gray-300">Company Logo</Label>
                             <Input
                                 id="logo"
-                                className='mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white'
+                                className='bg-white/50 dark:bg-gray-900/50 rounded-xl focus:ring-red-500 border-gray-200 dark:border-white/10 dark:text-white'
                                 type="file"
                                 accept="image/*"
                                 onChange={changeFileHandler}
                             />
-                            {errors.file && <span className="text-red-500 text-sm">{errors.file}</span>}
+                            {errors.file && <span className="text-red-500 text-xs">{errors.file}</span>}
                         </div>
-                        <div className='flex items-center justify-between mt-8'>
+                        <div className='flex items-center justify-between gap-4 pt-6'>
                             <Button
                                 type="button"
-                                variant="outline"
+                                variant="ghost"
                                 onClick={() => navigate("/admin/companies")}
-                                className="flex items-center text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white transition-colors duration-300"
+                                className="flex items-center text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors duration-300"
                             >
                                 <ArrowLeft className="w-4 h-4 mr-2" />
-                                Back to Companies
+                                Back
                             </Button>
                             <Button
                                 type="submit"
-                                className="bg-blue-600 hover:bg-blue-700 text-white transition-colors duration-300"
+                                className="px-10 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl transition-all duration-300 red-glow"
                                 disabled={loading}
                             >
                                 {loading ? (
                                     <>
                                         <Loader2 className='mr-2 h-4 w-4 animate-spin' />
-                                        Please wait
+                                        Updating...
                                     </>
                                 ) : (
                                     'Update Company'

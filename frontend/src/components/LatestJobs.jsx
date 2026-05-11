@@ -32,7 +32,7 @@ const LatestJobs = () => {
           Job Openings
         </h2>
         <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-          Explore the newest and most sought-after job openings on JobLynk. Whether you prefer remote work or a dynamic office environment, we have a wide range of opportunities to suit your career goals.
+          Explore the newest and most sought-after job openings on prep4Job. Whether you prefer remote work or a dynamic office environment, we have a wide range of opportunities to suit your career goals.
         </p>
       </div>
 

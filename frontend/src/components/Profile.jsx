@@ -15,14 +15,14 @@ const Profile = () => {
     const {user} = useSelector(store=>store.auth);
 
     return (
-        <div className='bg-gray-100 pt-16 dark:bg-gray-900 min-h-screen'>
+        <div className='bg-mesh-light dark:bg-mesh-dark pt-16 min-h-screen'>
           
             <div className='max-w-4xl mx-auto my-8 px-4'>
-                <div className='bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden'>
+                <div className='glass-card rounded-2xl overflow-hidden'>
                     <div className='p-6 sm:p-8'>
                         <div className='flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6'>
                             <div className='flex items-center gap-4 mb-4 sm:mb-0'>
-                                <Avatar className="h-24 w-24 rounded-full border-4 border-blue-500 dark:border-blue-400">
+                                <Avatar className="h-24 w-24 rounded-full border-4 border-red-500 dark:border-red-400">
                                     <AvatarImage src={user?.profile?.profilePhoto || "https://www.shutterstock.com/image-vector/circle-line-simple-design-logo-600nw-2174926871.jpg"} alt="profile" />
                                 </Avatar>
                                 <div>
@@ -49,7 +49,7 @@ const Profile = () => {
                             <div className='flex flex-wrap gap-2'>
                                 {user?.profile?.skills.length !== 0 ? 
                                     user?.profile?.skills.map((item, index) => 
-                                        <Badge key={index} className="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+                                        <Badge key={index} className="bg-red-50 text-red-700 dark:bg-red-900/30 dark:text-red-300 border border-red-200 dark:border-red-800">
                                             {item}
                                         </Badge>
                                     ) : 
@@ -75,7 +75,7 @@ const Profile = () => {
                     </div>
                 </div>
                 
-                <div className='mt-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden'>
+                <div className='mt-8 glass-card rounded-2xl overflow-hidden'>
                     <h2 className='font-bold text-xl p-6 border-b border-gray-200 dark:border-gray-700 text-gray-800 dark:text-white'>
                         Applied Jobs
                     </h2>

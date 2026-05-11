@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FileText, Target, Briefcase, Users, Building, Star, ArrowRight, Sparkles, Rocket, Zap, Wand2 } from 'lucide-react';
+import { Target, Briefcase, Users, Building, Star, ArrowRight, Sparkles, Zap, Wand2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 // Irregular SVG shapes for background
@@ -85,39 +85,29 @@ const ActionCard = ({ icon: Icon, title, description, color, link, className }) 
   <Link to={link}>
     <motion.div
       whileHover={{ scale: 1.02, y: -5 }}
-      className={`relative overflow-hidden group ${className}`}
+      className={`relative overflow-hidden group glass-card border-white/5 rounded-3xl ${className}`}
     >
-      {/* Card Background with Gradient Border */}
-      <div className="absolute inset-0 bg-gradient-to-r from-white/90 to-white/50 dark:from-white/10 dark:to-white/5 backdrop-blur-sm rounded-2xl" />
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-100/50 via-purple-100/50 to-pink-100/50 dark:from-blue-900/20 dark:via-purple-900/20 dark:to-pink-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+      <div className="absolute inset-0 bg-gradient-to-br from-red-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       
-      {/* Card Content */}
-      <div className="relative p-8 backdrop-blur-sm rounded-2xl border border-white/20">
-        {/* Icon Container with Gradient */}
-        <div className={`relative w-16 h-16 ${color} rounded-2xl overflow-hidden mb-6 group-hover:scale-110 transition-transform duration-300`}>
+      <div className="relative p-8">
+        <div className={`relative w-16 h-16 ${color} rounded-2xl overflow-hidden mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-black/10`}>
           <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent" />
           <div className="absolute inset-0 flex items-center justify-center">
             <Icon className="w-8 h-8 text-white transform group-hover:rotate-12 transition-transform duration-300" />
           </div>
         </div>
 
-        {/* Title with Gradient */}
-        <h3 className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent mb-4">
+        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
           {title}
         </h3>
 
-        {/* Description */}
-        <p className="text-gray-600 dark:text-gray-400 mb-6 ">
+        <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
           {description}
         </p>
 
-        {/* Action Button */}
-        <div className="flex items-center text-blue-600 dark:text-blue-400 font-medium group-hover:translate-x-2 transition-transform duration-300">
+        <div className="flex items-center text-red-600 dark:text-red-400 font-bold tracking-tight group-hover:translate-x-2 transition-transform duration-300">
           Get Started <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
         </div>
-
-        {/* Decorative Elements */}
-        <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-gradient-to-br from-white/5 to-white/30 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500" />
       </div>
     </motion.div>
   </Link>
@@ -125,61 +115,50 @@ const ActionCard = ({ icon: Icon, title, description, color, link, className }) 
 
 const HeroSection = () => {
   const stats = [
-    { icon: Briefcase, label: "Active Jobs", value: "1000+", color: "from-blue-500 to-blue-600" },
-    { icon: Users, label: "Job Seekers", value: "50k+", color: "from-purple-500 to-pink-500" },
-    { icon: Building, label: "Companies", value: "200+", color: "from-indigo-500 to-violet-500" },
-    { icon: Star, label: "Success Rate", value: "95%", color: "from-amber-500 to-orange-500" },
+    { icon: Briefcase, label: "Active Jobs", value: "1000+", color: "bg-red-600" },
+    { icon: Users, label: "Job Seekers", value: "50k+", color: "bg-red-600" },
+    { icon: Building, label: "Companies", value: "200+", color: "bg-red-600" },
+    { icon: Star, label: "Success Rate", value: "95%", color: "bg-red-600" },
   ];
 
   return (
-    <div className="relative min-h-[90vh] overflow-hidden bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
+    <div className="relative min-h-[90vh] overflow-hidden bg-mesh-light dark:bg-mesh-dark pt-20">
       {/* Background SVG Shapes */}
-      <BgShape1 />
-      <BgShape2 />
-      <BgShape3 />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <BgShape1 />
+        <BgShape2 />
+        <BgShape3 />
+      </div>
 
-      {/* Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16">
-        <div className="lg:flex items-center gap-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20 relative z-10">
+        <div className="lg:flex items-center gap-16">
           {/* Left Content */}
-          <div className="lg:w-1/2 relative z-10">
+          <div className="lg:w-1/2">
             <FloatingElement delay={0} duration={0.6}>
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/50 dark:to-purple-900/50 mb-8"
+                className="inline-flex items-center px-5 py-2 rounded-full bg-red-600/10 border border-red-500/20 mb-8"
               >
-                <Sparkles className="w-5 h-5 text-blue-600 dark:text-blue-400 mr-2" />
-                <span className="text-sm font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  AI-Powered Job Search Platform
+                <Sparkles className="w-5 h-5 text-red-600 mr-2 animate-pulse" />
+                <span className="text-sm font-bold text-red-600 tracking-widest uppercase">
+                  AI-Powered Career Platform
                 </span>
               </motion.div>
 
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-tight mb-8">
-                <motion.span 
-                  className="inline-block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text"
-                  animate={{ 
-                    backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-                  }}
-                  transition={{ 
-                    duration: 5,
-                    repeat: Infinity,
-                    ease: "linear"
-                  }}
-                  style={{ backgroundSize: '200% 200%' }}
-                >
-                  Elevate Your Career Journey
-                </motion.span>
+              <h1 className="text-6xl sm:text-7xl lg:text-8xl font-black leading-[0.9] mb-8 text-gray-900 dark:text-white tracking-tighter">
+                Elevate <br />
+                <span className="text-red-600">Your Future</span>
               </h1>
 
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed mb-12"
+                className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed mb-12 max-w-lg"
               >
-                Transform your job search experience with AI-powered tools, professional resume building, 
-                and intelligent job matching. Stand out from the crowd and land your dream job faster.
+                Transform your job search with intelligent tools, AI resume building, 
+                and high-precision matching.
               </motion.p>
 
               {/* Stats Grid */}
@@ -189,15 +168,15 @@ const HeroSection = () => {
                     key={index}
                     delay={0.4 + index * 0.1}
                     duration={0.5}
-                    className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:border-white/40 transition-colors"
+                    className="glass-card rounded-2xl p-6 border-white/5"
                   >
-                    <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${stat.color} bg-opacity-10`}>
-                      <stat.icon className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                    <div className={`inline-flex p-3 rounded-xl bg-red-600/10`}>
+                      <stat.icon className="w-6 h-6 text-red-600" />
                     </div>
-                    <h3 className="mt-4 text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
+                    <h3 className="mt-4 text-3xl font-black text-gray-900 dark:text-white tracking-tight">
                       {stat.value}
                     </h3>
-                    <p className="text-gray-500">{stat.label}</p>
+                    <p className="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest">{stat.label}</p>
                   </FloatingElement>
                 ))}
               </div>
@@ -206,32 +185,32 @@ const HeroSection = () => {
 
           {/* Right Content - Action Cards */}
           <div className="lg:w-1/2 mt-16 lg:mt-0 relative">
-            <div className="grid gap-8 relative z-10">
+            <div className="grid gap-6 relative z-10">
               <ActionCard
                 icon={Wand2}
-                title="Smart Resume Builder"
-                description="Create stunning resumes with AI-powered suggestions, modern templates, and real-time optimization tips. Stand out to employers with professionally crafted resumes."
-                color="bg-gradient-to-r from-blue-500 to-cyan-500"
+                title="AI Resume Builder"
+                description="Craft professional resumes with real-time AI suggestions and modern templates."
+                color="bg-red-600"
                 link="/resume-builder"
-                className="transform lg:translate-x-12"
+                className="lg:ml-12"
               />
               
               <ActionCard
                 icon={Target}
-                title="ATS Score Analyzer"
-                description="Get instant ATS compatibility scores, keyword optimization suggestions, and formatting recommendations to ensure your resume passes through ATS systems."
-                color="bg-gradient-to-r from-purple-500 to-pink-500"
+                title="ATS Analyzer"
+                description="Optimize your visibility with instant ATS compatibility checks and keyword feedback."
+                color="bg-gray-800"
                 link="/ats-score"
-                className="transform lg:-translate-x-12"
+                className="lg:-ml-12"
               />
 
               <ActionCard
                 icon={Zap}
-                title="AI Career Assistant"
-                description="Receive personalized career guidance, job recommendations, and interview preparation tips powered by advanced AI technology."
-                color="bg-gradient-to-r from-amber-500 to-orange-500"
-                className="transform lg:translate-x-12"
+                title="AI Assistant"
+                description="Personalized career guidance and interview prep powered by advanced models."
+                color="bg-red-600"
                 link="/ai-assistant"
+                className="lg:ml-12"
               />
             </div>
 
@@ -247,7 +226,7 @@ const HeroSection = () => {
                   repeat: Infinity,
                   ease: "linear",
                 }}
-                className="absolute inset-0 bg-gradient-to-r from-blue-100/40 via-purple-100/40 to-pink-100/40 rounded-full blur-3xl"
+                className="absolute inset-0 bg-gradient-to-r from-red-100/40 via-purple-100/40 to-pink-100/40 rounded-full blur-3xl opacity-20"
               />
             </div>
           </div>

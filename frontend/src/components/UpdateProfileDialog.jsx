@@ -70,85 +70,90 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
 
     return (
         <Dialog open={open} onOpenChange={setOpen}>
-            <DialogContent className="sm:max-w-[425px] bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
-                <DialogHeader>
-                    <DialogTitle className="text-2xl font-bold">Update Profile</DialogTitle>
-                </DialogHeader>
-                <form onSubmit={submitHandler} className="space-y-4">
+            <DialogContent className="sm:max-w-[450px] glass-card border-white/10 text-gray-900 dark:text-white overflow-hidden p-0">
+                <div className="bg-red-600 px-6 py-4 flex items-center gap-3">
+                    <Upload className="w-6 h-6 text-white" />
+                    <DialogTitle className="text-xl font-bold text-white">Update Profile</DialogTitle>
+                </div>
+                <form onSubmit={submitHandler} className="p-6 space-y-5">
                     <div className='space-y-4'>
-                        <div className='space-y-2'>
-                            <Label htmlFor="name">Name</Label>
+                        <div className='space-y-1.5'>
+                            <Label htmlFor="name" className="text-sm font-semibold text-gray-700 dark:text-gray-300">Full Name</Label>
                             <Input
                                 id="name"
                                 name="fullname"
                                 type="text"
                                 value={input.fullname}
                                 onChange={changeEventHandler}
-                                className="w-full"
+                                className="bg-white/50 dark:bg-gray-900/50 rounded-xl focus:ring-red-500 border-gray-200 dark:border-white/10 dark:text-white"
                             />
                         </div>
-                        <div className='space-y-2'>
-                            <Label htmlFor="email">Email</Label>
+                        <div className='space-y-1.5'>
+                            <Label htmlFor="email" className="text-sm font-semibold text-gray-700 dark:text-gray-300">Email Address</Label>
                             <Input
                                 id="email"
                                 name="email"
                                 type="email"
                                 value={input.email}
                                 onChange={changeEventHandler}
-                                className="w-full"
+                                className="bg-white/50 dark:bg-gray-900/50 rounded-xl focus:ring-red-500 border-gray-200 dark:border-white/10 dark:text-white"
                             />
                         </div>
-                        <div className='space-y-2'>
-                            <Label htmlFor="number">Phone Number</Label>
+                        <div className='space-y-1.5'>
+                            <Label htmlFor="number" className="text-sm font-semibold text-gray-700 dark:text-gray-300">Phone Number</Label>
                             <Input
                                 id="number"
                                 name="phoneNumber"
                                 value={input.phoneNumber}
                                 onChange={changeEventHandler}
-                                className="w-full"
+                                className="bg-white/50 dark:bg-gray-900/50 rounded-xl focus:ring-red-500 border-gray-200 dark:border-white/10 dark:text-white"
                             />
                         </div>
-                        <div className='space-y-2'>
-                            <Label htmlFor="bio">Bio</Label>
+                        <div className='space-y-1.5'>
+                            <Label htmlFor="bio" className="text-sm font-semibold text-gray-700 dark:text-gray-300">Short Bio</Label>
                             <Input
                                 id="bio"
                                 name="bio"
                                 value={input.bio}
                                 onChange={changeEventHandler}
-                                className="w-full"
+                                className="bg-white/50 dark:bg-gray-900/50 rounded-xl focus:ring-red-500 border-gray-200 dark:border-white/10 dark:text-white"
                             />
                         </div>
-                        <div className='space-y-2'>
-                            <Label htmlFor="skills">Skills (comma-separated)</Label>
+                        <div className='space-y-1.5'>
+                            <Label htmlFor="skills" className="text-sm font-semibold text-gray-700 dark:text-gray-300">Skills (comma-separated)</Label>
                             <Input
                                 id="skills"
                                 name="skills"
                                 value={input.skills}
                                 onChange={changeEventHandler}
-                                className="w-full"
+                                className="bg-white/50 dark:bg-gray-900/50 rounded-xl focus:ring-red-500 border-gray-200 dark:border-white/10 dark:text-white"
                             />
                         </div>
-                        <div className='space-y-2'>
-                            <Label htmlFor="file">Resume</Label>
-                            <div className="flex items-center space-x-2">
-                                {input.file ? (
-                                    <span className='text-sm text-gray-600 dark:text-gray-400'>{input.file.name}</span>
-                                ) : resumeUrl ? (
-                                    <a 
-                                        target='_blank' 
-                                        rel='noopener noreferrer' 
-                                        href={resumeUrl} 
-                                        className='text-blue-500 hover:underline text-sm'
-                                    >
-                                        {resumeName}
-                                    </a>
-                                ) : (
-                                    <span className='text-sm text-gray-400'>No resume uploaded</span>
+                        <div className='space-y-2 pt-2'>
+                            <Label htmlFor="file" className="text-sm font-semibold text-gray-700 dark:text-gray-300">Resume (PDF)</Label>
+                            <div className="flex flex-col gap-2">
+                                <div className="flex items-center gap-3">
+                                    <label htmlFor="file" className="cursor-pointer bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 text-gray-900 dark:text-white py-2 px-4 rounded-xl inline-flex items-center text-sm font-medium transition-all">
+                                        <Upload className="mr-2 h-4 w-4 text-red-600" />
+                                        {input.file ? "Change File" : "Upload Resume"}
+                                    </label>
+                                    {input.file && (
+                                        <span className='text-xs text-red-600 dark:text-red-400 font-medium truncate max-w-[150px]'>{input.file.name}</span>
+                                    )}
+                                </div>
+                                {!input.file && resumeUrl && (
+                                    <div className="flex items-center gap-2 text-xs">
+                                        <span className="text-gray-500">Current:</span>
+                                        <a 
+                                            target='_blank' 
+                                            rel='noopener noreferrer' 
+                                            href={resumeUrl} 
+                                            className='text-red-600 dark:text-red-400 hover:underline font-semibold'
+                                        >
+                                            {resumeName}
+                                        </a>
+                                    </div>
                                 )}
-                                <label htmlFor="file" className="cursor-pointer bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md inline-flex items-center text-sm">
-                                    <Upload className="mr-2 h-4 w-4" />
-                                    Upload New
-                                </label>
                                 <Input
                                     id="file"
                                     name="file"
@@ -160,12 +165,12 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
                             </div>
                         </div>
                     </div>
-                    <DialogFooter>
+                    <DialogFooter className="pt-4">
                         <Button
                             type="submit"
-                            className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white"
+                            className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-6 rounded-xl transition-all duration-300 red-glow shadow-lg shadow-red-500/20"
                         >
-                            Update Profile
+                            Save Changes
                         </Button>
                     </DialogFooter>
                 </form>

@@ -21,15 +21,15 @@ import { motion } from 'framer-motion';
                 className="space-y-4 sm:space-y-6"
               >
                 <Link to="/" className="flex items-center space-x-2 group">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
-                    <span className="text-white font-bold text-xl sm:text-2xl">J</span>
+                  <div className="w-9 h-9 bg-red-600 rounded-lg flex items-center justify-center shadow-md group-hover:scale-105 transition-transform duration-300">
+                    <span className="text-white font-black text-lg">P</span>
                   </div>
-                  <h1 className="text-2xl sm:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600">
-                    Job<span>Lynk</span>
+                  <h1 className="text-xl font-black text-gray-900 dark:text-white tracking-tight">
+                    prep<span className="text-red-600">4</span>Job
                   </h1>
                 </Link>
                 <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-                  Empower your career journey with JobLynk. Thousands of professionals have found their ideal job with us—join them today!
+                  Empower your career journey with prep4Job. Thousands of professionals have found their ideal job with us—join them today!
                 </p>
               </motion.div>
               
@@ -109,7 +109,7 @@ import { motion } from 'framer-motion';
               transition={{ duration: 0.6, delay: 0.8 }}
               className="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-gray-200 dark:border-gray-700 text-center text-gray-500 dark:text-gray-400"
             >
-              <p>&copy; {new Date().getFullYear()} JobLynk. All rights reserved.</p>
+              <p>&copy; {new Date().getFullYear()} prep4Job. All rights reserved.</p>
             </motion.div>
           </div>
         </footer>

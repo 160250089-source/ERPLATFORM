@@ -8,9 +8,7 @@ const LatestJobCards = ({ job }) => {
   return (
     <div
       onClick={() => navigate(`/description/${job._id}`)}
-      className="p-6 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
-                 cursor-pointer shadow-lg hover:shadow-2xl dark:shadow-md dark:hover:shadow-xl 
-                 transition-transform transform hover:scale-105 duration-300"
+      className="flex flex-col p-6 rounded-2xl glass-card cursor-pointer hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 h-full min-h-[250px]"
     >
      <div className="flex items-center gap-4 mb-4">
     {/* Left side: Logo */}
@@ -35,14 +33,14 @@ const LatestJobCards = ({ job }) => {
           {job?.description}
         </p>
       </div>
-      <div className="flex flex-wrap items-center gap-3 mt-3">
-        <Badge className="px-3 py-1 text-sm bg-blue-100 text-blue-700 dark:bg-blue-800 dark:text-blue-300">
+      <div className="flex flex-wrap items-center gap-2 mt-auto pt-4">
+        <Badge className="px-3 py-1 text-xs bg-red-50 text-red-600 hover:bg-red-100 dark:bg-red-900/30 dark:text-red-400 border-none shadow-none font-semibold">
           {job?.position} Positions
         </Badge>
-        <Badge className="px-3 py-1 text-sm bg-green-100 text-green-700 dark:bg-green-800 dark:text-green-300">
+        <Badge className="px-3 py-1 text-xs bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 border-none shadow-none font-semibold">
           {job?.jobType}
         </Badge>
-        <Badge className="px-3 py-1 text-sm bg-purple-100 text-purple-700 dark:bg-purple-800 dark:text-purple-300">
+        <Badge className="px-3 py-1 text-xs bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 border-none shadow-none font-semibold">
           {job?.salary} LPA
         </Badge>
       </div>
