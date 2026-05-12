@@ -11,6 +11,16 @@ export const registerCompany = async (req, res) => {
                 success: false
             });
         }
+        
+        // Check if recruiter has already created a company
+        const existingCompany = await Company.findOne({ userId: req.id });
+        if (existingCompany) {
+            return res.status(400).json({
+                message: "You can only create one company. You have already created a company.",
+                success: false
+            })
+        }
+        
         let company = await Company.findOne({ name: companyName });
         if (company) {
             return res.status(400).json({

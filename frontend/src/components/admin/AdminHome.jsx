@@ -99,7 +99,7 @@ const AdminHome = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Link to={link.path} className={`block ${link.disabled ? 'pointer-events-none opacity-60' : ''}`}>
+                <Link to={link.path} className={`block no-underline ${link.disabled ? 'pointer-events-none opacity-60' : ''}`}>
                   <div className={`bg-gradient-to-r ${link.color} rounded-2xl p-6 flex items-center text-white red-glow transition-all duration-300`}>
                     <div className="bg-white/20 p-3 rounded-xl mr-4">
                       <link.icon className="w-6 h-6" />
