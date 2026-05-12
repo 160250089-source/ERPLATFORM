@@ -85,8 +85,8 @@ import { motion } from 'framer-motion';
                 <div className="flex space-x-4">
                   {[
                     { icon: Facebook, label: 'Facebook', href: 'https://facebook.com' },
-                    { icon: Twitter, label: 'Twitter', href: 'https://twitter.com' },
-                    { icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com' }
+                    { icon: Twitter, label: 'Twitter', href: 'http://x.com/RAVINDER_WEBDEV' },
+                    { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/ravinder-tiwari-11426a323/' }
                   ].map((social, index) => (
                     <motion.a 
                       key={index}

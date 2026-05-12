@@ -1,6 +1,6 @@
-# 🧑‍💼 JobPortal
+# 🧑‍💼 Prep4Job
 
-**JobPortal** is a full-stack job-seeking and recruitment platform built with **React**, **Node.js**, **Express**, **MongoDB**, and **Tailwind CSS**. It provides a seamless experience for **Job Seekers**, **Employers**, and optionally **Admins** to manage job listings, applications, and hiring workflows.
+**Prep4Job** is a full-stack job-seeking and recruitment platform built with **React**, **Node.js**, **Express**, **MongoDB**, and **Tailwind CSS**. It provides a seamless experience for **Job Seekers**, **Employers**, and optionally **Admins** to manage job listings, applications, and hiring workflows.
 
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)]()
 
@@ -197,17 +197,16 @@ Store secrets in environment variables or cloud secret managers
 
  Notification & email system
 
-📝 License
-This project is licensed under the MIT License.
+
 
 📬 Contact & Support
 For queries, feedback, or feature requests:
 
-GitHub: @git-senpai
+GitHub: @git-x
 
 Issues: Open one here
 
-Made with ❤️ by git-senpai
+Made with ❤️ by git-X
 
 
 

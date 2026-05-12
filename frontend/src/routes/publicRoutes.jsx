@@ -1,5 +1,6 @@
 import { lazy } from 'react';
 import MainLayout from '../layouts/MainLayout';
+import Roadmap from '@/components/Roadmap';
 
 const Home = lazy(() => import('../components/Home'));
 const Login = lazy(() => import('../components/auth/Login'));
@@ -34,6 +35,11 @@ export const publicRoutes = [
     path: '/jobs',
     element: <MainLayout><Jobs /></MainLayout>
   },
+  {
+    path:"/roadmap",
+    element: <MainLayout><Roadmap /></MainLayout>
+  },
+
   {
     path: '/saved-jobs',
     element: <MainLayout><SavedJobs /></MainLayout>

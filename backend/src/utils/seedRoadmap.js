@@ -1,13 +1,13 @@
 import dotenv from "dotenv";
-dotenv.config();
+dotenv.config({ path: "../../.env" });
 
 import mongoose from "mongoose";
 import roadMapModel from "../models/roadmap.model.js";
 import stepModel from "../models/step.model.js";
 import questionModel from "../models/questions.model.js";
 
-import roadmapData from "./fullstack.roadmap.json" assert { type: "json" };
-import questionsData from "./fullstack.questions.json" assert { type: "json" };
+import roadmapData from "./fullstack.roadmap.json" with { type: "json" };
+import questionsData from "./fullstack.questions.json" with { type: "json" };
 
 async function seed() {
   try {

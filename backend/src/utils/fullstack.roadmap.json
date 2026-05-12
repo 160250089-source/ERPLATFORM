@@ -1,4 +1,4 @@
-module.exports = {
+{
   "title": "Full Stack Developer",
   "description": "Complete roadmap to become a full stack developer from beginner to advanced",
   "category": "Web Development",
