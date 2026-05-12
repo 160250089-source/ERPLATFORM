@@ -22,8 +22,8 @@ export const fetchApplicants = createAsyncThunk(
   async (jobId = null, { rejectWithValue }) => {
     try {
       const url = jobId 
-        ? `${APPLICATION_API_END_POINT}/job/${jobId}`
-        : `${APPLICATION_API_END_POINT}/get`
+        ? `${APPLICATION_API_END_POINT}/${jobId}/applicants`
+        : `${APPLICATION_API_END_POINT}/admin`
       
       console.log("Fetching applicants from URL:", url);
       
@@ -37,10 +37,11 @@ export const fetchApplicants = createAsyncThunk(
       console.log("Full API Response:", JSON.stringify(response.data, null, 2));
       
       // More robust way to extract applications
-      const applicationsData = response.data.data?.applications || 
-                                response.data.applications || 
-                                response.data || 
-                                [];
+      const applicationsData = response.data.applications ||
+                response.data.data?.applications || 
+                response.data.application || 
+                response.data || 
+                [];
       
       console.log("Extracted Applicants:", applicationsData);
       

@@ -5,6 +5,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Building, Briefcase, Users, PlusCircle, ArrowRight } from 'lucide-react';
 import { useDispatch } from 'react-redux';
 import { fetchApplicants } from '../../redux/applicationSlice';
+import useGetAllCompanies from '@/hooks/useGetAllCompanies';
+import useGetAllAdminJobs from '@/hooks/useGetAllAdminJobs';
 
 const AdminHome = () => {
   const dispatch = useDispatch();
@@ -13,19 +15,32 @@ const AdminHome = () => {
   const { applicants } = useSelector(store => store.application);
   const navigate = useNavigate();
 
+  useGetAllCompanies();
+  useGetAllAdminJobs();
+
   useEffect(() => {
     dispatch(fetchApplicants());
   }, [dispatch]);
 
+  const totalApplicants = applicants.length;
+  const currentCompany = companies[0];
+  const companyName = currentCompany?.name || 'N/A';
+
   const stats = [
-    { title: 'Total Companies', value: companies.length, icon: Building, accent: 'text-blue-500 dark:text-blue-400', bg: 'bg-blue-50 dark:bg-blue-900/30', onClick: () => navigate('/admin/companies') },
+    { title: 'Company Name', value: companyName, icon: Building, accent: 'text-blue-500 dark:text-blue-400', bg: 'bg-blue-50 dark:bg-blue-900/30', clickable: false },
     { title: 'Listed Jobs', value: allAdminJobs.length, icon: Briefcase, accent: 'text-emerald-500 dark:text-emerald-400', bg: 'bg-emerald-50 dark:bg-emerald-900/30', onClick: () => navigate('/admin/jobs') },
-    { title: 'Total Applicants', value: applicants?.length || 0, icon: Users, accent: 'text-purple-500 dark:text-purple-400', bg: 'bg-purple-50 dark:bg-purple-900/30', onClick: () => navigate('/admin/applicants') },
+    { title: 'Total Applicants', value: totalApplicants, icon: Users, accent: 'text-purple-500 dark:text-purple-400', bg: 'bg-purple-50 dark:bg-purple-900/30', onClick: () => navigate('/admin/applicants') },
   ];
 
   const quickLinks = [
     { title: 'Post New Job', path: '/admin/jobs/create', icon: PlusCircle, color: 'from-indigo-500 to-indigo-600' },
-    { title: 'Add New Company', path: '/admin/companies/create', icon: Building, color: 'from-red-500 to-red-600' },
+    {
+      title: 'Update Company',
+      path: currentCompany?._id ? `/admin/companies/${currentCompany._id}` : '/admin/companies/create',
+      icon: Building,
+      color: 'from-red-500 to-red-600',
+      disabled: !currentCompany,
+    },
   ];
 
   return (
@@ -43,7 +58,7 @@ const AdminHome = () => {
           className="mb-10"
         >
           <p className="text-sm font-semibold text-red-600 dark:text-red-400 tracking-widest uppercase mb-1">Overview</p>
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white">Admin Dashboard</h1>
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white">Recruiter Dashboard</h1>
         </motion.div>
 
         {/* Stat Cards */}
@@ -54,9 +69,9 @@ const AdminHome = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -4 }}
-              className="glass-card rounded-2xl p-6 flex items-center cursor-pointer transition-all duration-300"
-              onClick={item.onClick}
+              whileHover={item.clickable === false ? undefined : { y: -4 }}
+              className={`glass-card rounded-2xl p-6 flex items-center transition-all duration-300 ${item.clickable === false ? 'cursor-default' : 'cursor-pointer'}`}
+              onClick={item.clickable === false ? undefined : item.onClick}
             >
               <div className={`${item.bg} p-4 rounded-xl mr-5 transition-colors duration-200`}>
                 <item.icon className={`w-6 h-6 ${item.accent}`} />
@@ -84,7 +99,7 @@ const AdminHome = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Link to={link.path} className="block">
+                <Link to={link.path} className={`block ${link.disabled ? 'pointer-events-none opacity-60' : ''}`}>
                   <div className={`bg-gradient-to-r ${link.color} rounded-2xl p-6 flex items-center text-white red-glow transition-all duration-300`}>
                     <div className="bg-white/20 p-3 rounded-xl mr-4">
                       <link.icon className="w-6 h-6" />

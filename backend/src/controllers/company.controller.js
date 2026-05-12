@@ -35,7 +35,7 @@ export const registerCompany = async (req, res) => {
 export const getCompany = async (req, res) => {
     try {
         const userId = req.id; // logged in user id
-        const companies = await Company.find({ userId });
+        const companies = await Company.find({ userId }).sort({ createdAt: -1 });
         if (!companies) {
             return res.status(404).json({
                 message: "Companies not found.",
@@ -72,14 +72,22 @@ export const getCompanyById = async (req, res) => {
 export const updateCompany = async (req, res) => {
     try {
         const { name, description, website, location } = req.body;
- 
-        const file = req.file;
-        // idhar cloudinary ayega
-        const fileUri = getDataUri(file);
-        const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
-        const logo = cloudResponse.secure_url;
-    
-        const updateData = { name, description, website, location, logo };
+
+        const existingCompany = await Company.findById(req.params.id);
+        if (!existingCompany) {
+            return res.status(404).json({
+                message: "Company not found.",
+                success: false
+            })
+        }
+
+        const updateData = { name, description, website, location };
+
+        if (req.file) {
+            const fileUri = getDataUri(req.file);
+            const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
+            updateData.logo = cloudResponse.secure_url;
+        }
 
         const company = await Company.findByIdAndUpdate(req.params.id, updateData, { new: true });
 
