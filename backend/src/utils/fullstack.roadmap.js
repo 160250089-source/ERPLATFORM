@@ -1,0 +1,183 @@
+module.exports = {
+  "title": "Full Stack Developer",
+  "description": "Complete roadmap to become a full stack developer from beginner to advanced",
+  "category": "Web Development",
+  "steps": [
+    {
+      "title": "HTML Basics",
+      "content": "HTML (HyperText Markup Language) is the foundation of web development. It is used to structure web pages using elements like headings, paragraphs, links, images, and lists. Semantic HTML improves accessibility and SEO by using meaningful tags such as header, footer, article, and section. Understanding HTML helps you build the skeleton of any web application.",
+      "resources": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTML",
+        "https://www.youtube.com/watch?v=UB1O30fR-EE",
+        "https://www.youtube.com/watch?v=pQN-pnXPaVg",
+        "https://www.freecodecamp.org/learn/responsive-web-design/",
+        "https://html.com/"
+      ]
+    },
+    {
+      "title": "HTML Forms & Validation",
+      "content": "Forms allow users to input data such as login details, feedback, and personal information. You will learn about input types, labels, buttons, and validation techniques like required fields, pattern matching, and custom validation. Forms are critical in real-world applications for user interaction.",
+      "resources": [
+        "https://developer.mozilla.org/en-US/docs/Learn/Forms",
+        "https://www.youtube.com/watch?v=fNcJuPIZ2WE",
+        "https://www.w3schools.com/html/html_forms.asp",
+        "https://www.freecodecamp.org/news/form-validation-in-html/",
+        "https://css-tricks.com/form-validation-ux-html-css/"
+      ]
+    },
+    {
+      "title": "CSS Basics",
+      "content": "CSS is used to style and design web pages. It controls layout, colors, fonts, spacing, and responsiveness. You will learn selectors, specificity, and the box model. CSS makes your application visually appealing and improves user experience.",
+      "resources": [
+        "https://developer.mozilla.org/en-US/docs/Web/CSS",
+        "https://www.youtube.com/watch?v=yfoY53QXEnI",
+        "https://www.freecodecamp.org/learn/",
+        "https://css-tricks.com/",
+        "https://web.dev/learn/css/"
+      ]
+    },
+    {
+      "title": "Flexbox",
+      "content": "Flexbox is a layout system that allows you to align and distribute space among items in a container. It simplifies responsive design and helps in creating flexible UI layouts. Key properties include justify-content, align-items, and flex-direction.",
+      "resources": [
+        "https://css-tricks.com/snippets/css/a-guide-to-flexbox/",
+        "https://www.youtube.com/watch?v=JJSoEo8JSnc",
+        "https://flexboxfroggy.com/",
+        "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout",
+        "https://web.dev/learn/css/flexbox/"
+      ]
+    },
+    {
+      "title": "CSS Grid",
+      "content": "CSS Grid is a powerful two-dimensional layout system. It allows you to design complex layouts with rows and columns. It is ideal for building dashboards and advanced UI layouts.",
+      "resources": [
+        "https://css-tricks.com/snippets/css/complete-guide-grid/",
+        "https://www.youtube.com/watch?v=jV8B24rSN5o",
+        "https://gridgarden.net/",
+        "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout",
+        "https://web.dev/learn/css/grid/"
+      ]
+    },
+    {
+      "title": "JavaScript Basics",
+      "content": "JavaScript is a programming language used to add interactivity to web pages. You will learn variables, functions, loops, arrays, and objects. It is essential for handling user actions and dynamic content.",
+      "resources": [
+        "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+        "https://www.youtube.com/watch?v=W6NZfCO5SIk",
+        "https://javascript.info/",
+        "https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/",
+        "https://eloquentjavascript.net/"
+      ]
+    },
+    {
+      "title": "DOM Manipulation",
+      "content": "The DOM represents HTML as a tree structure. JavaScript can manipulate this structure to dynamically update content, styles, and attributes. This is essential for interactive web applications.",
+      "resources": [
+        "https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model",
+        "https://www.youtube.com/watch?v=0ik6X4DJKCc",
+        "https://javascript.info/dom-nodes",
+        "https://www.freecodecamp.org/news/dom-manipulation-in-javascript/",
+        "https://web.dev/dom/"
+      ]
+    },
+    {
+      "title": "Async JavaScript",
+      "content": "Async JavaScript allows non-blocking execution. You will learn callbacks, promises, async/await, and how to fetch data from APIs. This is crucial for building real-world apps.",
+      "resources": [
+        "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous",
+        "https://www.youtube.com/watch?v=PoRJizFvM7s",
+        "https://javascript.info/async",
+        "https://web.dev/promises/",
+        "https://www.freecodecamp.org/news/javascript-async-await-tutorial/"
+      ]
+    },
+    {
+      "title": "Git & GitHub",
+      "content": "Git is a version control system that helps track changes in code. GitHub allows collaboration and code sharing. You will learn commits, branches, pull requests, and merging.",
+      "resources": [
+        "https://git-scm.com/docs",
+        "https://www.youtube.com/watch?v=RGOj5yH7evk",
+        "https://www.freecodecamp.org/news/git-and-github-for-beginners/",
+        "https://learngitbranching.js.org/",
+        "https://docs.github.com/en/get-started"
+      ]
+    },
+    {
+      "title": "React Basics",
+      "content": "React is a JavaScript library for building user interfaces. You will learn components, JSX, props, and state. It helps create reusable UI components.",
+      "resources": [
+        "https://react.dev/learn",
+        "https://www.youtube.com/watch?v=bMknfKXIFA8",
+        "https://beta.reactjs.org/",
+        "https://www.freecodecamp.org/news/learn-react-for-beginners/",
+        "https://scrimba.com/learn/learnreact"
+      ]
+    },
+    {
+      "title": "React Hooks",
+      "content": "Hooks allow you to use state and lifecycle features in functional components. You will learn useState, useEffect, and custom hooks.",
+      "resources": [
+        "https://react.dev/reference/react",
+        "https://www.youtube.com/watch?v=TNhaISOUy6Q",
+        "https://www.freecodecamp.org/news/react-hooks-guide/",
+        "https://overreacted.io/",
+        "https://reactpatterns.com/"
+      ]
+    },
+    {
+      "title": "Node.js",
+      "content": "Node.js is a runtime environment that allows JavaScript to run on the server. It is used to build scalable backend applications.",
+      "resources": [
+        "https://nodejs.org/en/docs",
+        "https://www.youtube.com/watch?v=TlB_eWDSMt4",
+        "https://www.freecodecamp.org/news/nodejs-tutorial/",
+        "https://nodejs.dev/learn",
+        "https://developer.mozilla.org/en-US/docs/Learn/Server-side/Node_server_without_framework"
+      ]
+    },
+    {
+      "title": "Express.js",
+      "content": "Express is a lightweight framework for building APIs in Node.js. It simplifies routing, middleware, and server handling.",
+      "resources": [
+        "https://expressjs.com/",
+        "https://www.youtube.com/watch?v=L72fhGm1tfE",
+        "https://www.freecodecamp.org/news/express-js-tutorial/",
+        "https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs",
+        "https://expressjs.com/en/starter/installing.html"
+      ]
+    },
+    {
+      "title": "REST APIs",
+      "content": "REST APIs allow communication between client and server. You will learn HTTP methods, status codes, and API design principles.",
+      "resources": [
+        "https://restfulapi.net/",
+        "https://www.youtube.com/watch?v=Q-BpqyOT3a8",
+        "https://www.freecodecamp.org/news/rest-api-design-best-practices/",
+        "https://developer.mozilla.org/en-US/docs/Glossary/REST",
+        "https://www.postman.com/api-platform/"
+      ]
+    },
+    {
+      "title": "Authentication",
+      "content": "Authentication ensures secure access to applications. You will learn JWT, sessions, hashing passwords, and security practices.",
+      "resources": [
+        "https://jwt.io/introduction",
+        "https://www.youtube.com/watch?v=7Q17ubqLfaM",
+        "https://www.freecodecamp.org/news/jwt-authentication-tutorial/",
+        "https://auth0.com/learn/json-web-tokens/",
+        "https://developer.mozilla.org/en-US/docs/Web/Security"
+      ]
+    },
+    {
+      "title": "Database (MongoDB/PostgreSQL)",
+      "content": "Databases store and manage data. You will learn CRUD operations, indexing, and schema design using MongoDB or PostgreSQL.",
+      "resources": [
+        "https://www.mongodb.com/docs/",
+        "https://www.postgresql.org/docs/",
+        "https://www.youtube.com/watch?v=ofme2o29ngU",
+        "https://www.freecodecamp.org/news/database-design-basics/",
+        "https://sqlbolt.com/"
+      ]
+    }
+  ]
+}
