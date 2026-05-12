@@ -4,14 +4,15 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import morgan from "morgan";
-import connectDB from "./utils/db.js";
 import userRoute from "./routes/user.route.js";
 import companyRoute from "./routes/company.route.js";
 import jobRoute from "./routes/job.route.js";
 import applicationRoute from "./routes/application.route.js";
 import atsRoutes from "./routes/atsRoutes.js"
 import contactRoutes from "./routes/contactRoutes.js"
-
+import questionRouter from "./routes/questions.routes.js";
+import stepRouter from "./routes/step.routes.js";
+import roadmapRouter from "./routes/roadmap.routes.js";
 
 const app = express();
 
@@ -42,7 +43,6 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-const PORT = process.env.PORT || 8000;
 
 // api routes
 app.use("/api/v1/user", userRoute);
@@ -50,13 +50,12 @@ app.use("/api/v1/company", companyRoute);
 app.use("/api/v1/job", jobRoute);
 app.use("/api/v1/application", applicationRoute);
 app.use('/api/contact', contactRoutes);
+app.use("/api/roadmap", roadmapRouter)
+app.use("/api/step", stepRouter)
+app.use("/api/question", questionRouter)
 
 app.use('/api', atsRoutes);  // This will prefix all ATS routes with /api
 
 
-// start server
-app.listen(PORT, () => {
-  connectDB();
-  console.log(`Server running at port ${PORT}`);
-});
 
+export default app
