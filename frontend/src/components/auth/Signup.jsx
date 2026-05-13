@@ -4,7 +4,7 @@ import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { USER_API_END_POINT } from '@/utils/constant';
+import { AUTH_API_END_POINT } from '@/utils/constant';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '@/redux/authSlice';
 import { User, Mail, Phone, Lock, Upload, CheckCircle2 } from 'lucide-react';
@@ -99,30 +99,15 @@ const Signup = () => {
         }
 
         try {
-            const registerRes = await axios.post(`${USER_API_END_POINT}/register`, formData, {
+            const registerRes = await axios.post(`${AUTH_API_END_POINT}/register`, formData, {
                 headers: { 'Content-Type': "multipart/form-data" },
                 withCredentials: true,
             });
 
             if (registerRes.data.success) {
-                const loginRes = await axios.post(`${USER_API_END_POINT}/login`, {
-                    email: input.email,
-                    password: input.password
-                }, {
-                    headers: { 'Content-Type': 'application/json' },
-                    withCredentials: true,
-                });
-
-                if (loginRes.data.success) {
-                    dispatch(setUser(loginRes.data.user));
-                    successToast('Account created and logged in successfully!');
-                    
-                    if (loginRes.data.user.role === 'recruiter') {
-                        navigate("/admin");
-                    } else {
-                        navigate("/");
-                    }
-                }
+                dispatch(setUser(null));
+                successToast('Account created. Check your email to verify your account before logging in.');
+                navigate('/login');
             }
         } catch (error) {
             console.error(error);
@@ -132,7 +117,11 @@ const Signup = () => {
 
     useEffect(() => {
         if (user) {
-            navigate("/");
+            if (user.role === 'recruiter') {
+                navigate('/admin');
+            } else {
+                navigate('/');
+            }
         }
     }, [user]);
 

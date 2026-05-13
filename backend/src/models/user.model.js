@@ -17,11 +17,16 @@ const userSchema = new mongoose.Schema({
     password:{
         type:String,
         required:true,
+        select:false,
     },
     role:{
         type:String,
         enum:['student','recruiter'],
         required:true
+    },
+    verified:{
+        type:Boolean,
+        default:false
     },
     profile:{
         bio:{type:String},

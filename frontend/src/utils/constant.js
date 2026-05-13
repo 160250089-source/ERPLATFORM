@@ -2,6 +2,7 @@
 // export const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY || process.env.VITE_GEMINI_API_KEY;
 
 export const BASE_URL = import.meta.env.VITE_BACKEND_URL ;
+export const AUTH_API_END_POINT = `${BASE_URL}/auth`;
 export const USER_API_END_POINT = `${BASE_URL}/v1/user`;
 export const JOB_API_END_POINT = `${BASE_URL}/v1/job`;
 export const APPLICATION_API_END_POINT = `${BASE_URL}/v1/application`;

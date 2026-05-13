@@ -6,7 +6,7 @@ import { LogOut, User2, Menu, X, LayoutDashboard } from 'lucide-react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
-import { USER_API_END_POINT } from '@/utils/constant'
+import { AUTH_API_END_POINT } from '@/utils/constant'
 import { setUser } from '@/redux/authSlice'
 import { successToast, errorToast } from '@/utils/toast'
 import ThemeToggle from '../ThemeToggle'
@@ -31,7 +31,7 @@ const Navbar = () => {
 
   const logoutHandler = async () => {
     try {
-      const res = await axios.get(`${USER_API_END_POINT}/logout`, { withCredentials: true })
+      const res = await axios.get(`${AUTH_API_END_POINT}/logout`, { withCredentials: true })
       if (res.data.success) {
         dispatch(setUser(null))
         navigate("/")
