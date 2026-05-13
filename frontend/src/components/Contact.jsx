@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send ,X} from 'lucide-react';
 // import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
+import { CONTACT_API_END_POINT } from '../utils/constant';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -31,7 +32,7 @@ const Contact = () => {
     setStatus({ type: '', message: '' });
 
     try {
-      const response = await fetch('https://jobportal-backend-ov5w.onrender.com/api/contact/submit', {
+      const response = await fetch(`${CONTACT_API_END_POINT}/submit`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
