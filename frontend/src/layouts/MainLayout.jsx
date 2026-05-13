@@ -14,13 +14,17 @@ const MainLayout = ({ children }) => {
     '/login',
     '/signup',
     '/resume-builder',
-    '/ats-score'
+    '/ats-score',
+    '/roadmap'
   ];
 
   // Check if current path starts with any of the hide paths
-  const shouldHideActions = hideOnPaths.some(path => 
+  const shouldHideActions = hideOnPaths.some(path =>
     location.pathname.startsWith(path)
   );
+
+  // Hide footer on roadmap page
+  const shouldHideFooter = location.pathname.startsWith('/roadmap');
 
   return (
     <div className="min-h-screen w-full bg-background overflow-x-hidden">
@@ -35,7 +39,7 @@ const MainLayout = ({ children }) => {
         </Suspense>
       </div>
       {!shouldHideActions && user?.role !== 'recruiter' && <FloatingActions />}
-      <Footer />
+      {!shouldHideFooter && <Footer />}
     </div>
   );
 };

@@ -12,6 +12,7 @@ import ReactFlow, {
 } from "reactflow";
 import "reactflow/dist/style.css";
 
+
 // ─── NODE DATA ────────────────────────────────────────────────────────────────
 const nodeData = {
   internet: {

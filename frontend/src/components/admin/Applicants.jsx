@@ -20,8 +20,8 @@ const Applicants = () => {
 
     return (
         <div className='dark:bg-gray-900 bg-gray-50 min-h-screen'>
-          
-            <motion.div 
+
+            <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}

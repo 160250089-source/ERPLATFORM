@@ -4,7 +4,7 @@ import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { USER_API_END_POINT } from '@/utils/constant';
+import { AUTH_API_END_POINT } from '@/utils/constant';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '@/redux/authSlice';
 import { ArrowRight } from 'lucide-react';
@@ -60,7 +60,7 @@ const Login = () => {
         }
         
         try {
-            const res = await axios.post(`${USER_API_END_POINT}/login`, input, {
+            const res = await axios.post(`${AUTH_API_END_POINT}/login`, input, {
                 headers: {
                     "Content-Type": "application/json"
                 },
