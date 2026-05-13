@@ -13,6 +13,7 @@ import contactRoutes from "./routes/contactRoutes.js"
 import questionRouter from "./routes/questions.routes.js";
 import stepRouter from "./routes/step.routes.js";
 import roadmapRouter from "./routes/roadmap.routes.js";
+import authRouter from "./routes/auth.routes.js";
 
 
 const app = express();
@@ -54,6 +55,7 @@ app.use('/api/contact', contactRoutes);
 app.use("/api/roadmap", roadmapRouter)
 app.use("/api/step", stepRouter)
 app.use("/api/question", questionRouter)
+app.use("/api/auth", authRouter)
 
 app.use('/api', atsRoutes);  // This will prefix all ATS routes with /api
 
