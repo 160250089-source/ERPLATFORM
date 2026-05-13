@@ -73,6 +73,8 @@ const PostJob = () => {
                 .filter(req => req && req !== 'Responsibilities:')
                 .join(', ');
 
+
+                
             const formattedInput = {
                 title: input.title,
                 description: input.description,
