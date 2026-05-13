@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Label } from '../ui/label';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
@@ -17,16 +17,25 @@ const CompanyCreate = () => {
     const [companyName, setCompanyName] = useState('');
     const [loading, setLoading] = useState(false);
     const dispatch = useDispatch();
-    
+
     // Get userId from Redux store
     const userId = useSelector(selectUserId);
+    const { companies } = useSelector(store => store.company);
+
+    // Check if recruiter has already created a company
+    useEffect(() => {
+        if (companies && companies.length > 0) {
+            toast.error("You can only create one company. You have already created a company.");
+            navigate("/admin/companies");
+        }
+    }, [companies, navigate]);
 
     const registerNewCompany = async () => {
         if (!companyName.trim()) {
             toast.error("Please enter a company name");
             return;
         }
-        
+
         // Check if userId exists
         if (!userId) {
             toast.error("User not authenticated. Please log in.");
@@ -36,8 +45,8 @@ const CompanyCreate = () => {
         setLoading(true); // Start loading
         try {
             const res = await axios.post(
-                `${COMPANY_API_END_POINT}/register`, 
-                { companyName }, 
+                `${COMPANY_API_END_POINT}/register`,
+                { companyName },
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true,
@@ -59,7 +68,7 @@ const CompanyCreate = () => {
 
     return (
         <div className="bg-gray-50 dark:bg-gray-900 min-h-screen pt-20">
-            <motion.div 
+            <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
@@ -88,15 +97,15 @@ const CompanyCreate = () => {
                         </div>
 
                         <div className="flex items-center justify-between mt-8">
-                            <Button 
-                                variant="outline" 
+                            <Button
+                                variant="outline"
                                 onClick={() => navigate("/admin/companies")}
                                 className="flex items-center text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white transition-colors duration-300"
                             >
                                 <ArrowLeft className="w-4 h-4 mr-2" />
                                 Back
                             </Button>
-                            <Button 
+                            <Button
                                 onClick={registerNewCompany}
                                 disabled={loading}
                                 className={`bg-blue-600 hover:bg-blue-700 text-white transition-colors duration-300 ${loading && 'opacity-50 cursor-not-allowed'}`}

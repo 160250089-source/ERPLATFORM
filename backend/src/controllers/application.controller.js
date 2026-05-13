@@ -88,9 +88,59 @@ export const getApplicants = async (req,res) => {
                 success:false
             })
         };
+        const applications = job.applications.map((application) => ({
+            ...application.toObject(),
+            job: {
+                _id: job._id,
+                title: job.title,
+                company: job.company,
+            }
+        }));
         return res.status(200).json({
-            job, 
-            succees:true
+            applications,
+            success:true
+        });
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const getAdminApplicants = async (req, res) => {
+    try {
+        const adminId = req.id;
+        const jobs = await Job.find({ created_by: adminId }).populate({
+            path: 'applications',
+            options: { sort: { createdAt: -1 } },
+            populate: {
+                path: 'applicant'
+            }
+        });
+
+        const applications = jobs.flatMap((job) =>
+            (job.applications || []).map((application) => ({
+                ...application.toObject(),
+                job: {
+                    _id: job._id,
+                    title: job.title,
+                    company: job.company,
+                }
+            }))
+        );
+
+        const uniqueApplications = [];
+        const seenApplicants = new Set();
+
+        for (const application of applications) {
+            const applicantId = application.applicant?._id?.toString?.() || application.applicant?.toString?.() || application._id.toString();
+            if (!seenApplicants.has(applicantId)) {
+                seenApplicants.add(applicantId);
+                uniqueApplications.push(application);
+            }
+        }
+
+        return res.status(200).json({
+            applications: uniqueApplications,
+            success: true
         });
     } catch (error) {
         console.log(error);

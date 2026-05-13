@@ -1,6 +1,7 @@
 import { lazy } from 'react';
 import MainLayout from '../layouts/MainLayout';
 import Roadmap from '@/components/Roadmap';
+import ProtectedFeature from '@/components/shared/ProtectedFeature';
 
 const Home = lazy(() => import('../components/Home'));
 const Login = lazy(() => import('../components/auth/Login'));
@@ -36,8 +37,8 @@ export const publicRoutes = [
     element: <MainLayout><Jobs /></MainLayout>
   },
   {
-    path:"/roadmap",
-    element: <MainLayout><Roadmap /></MainLayout>
+    path: "/roadmap",
+    element: <MainLayout><ProtectedFeature message="Sign in to view learning roadmap"><Roadmap /></ProtectedFeature></MainLayout>
   },
 
   {
@@ -50,7 +51,7 @@ export const publicRoutes = [
   },
   {
     path: '/browse',
-    element: <MainLayout><Browse /></MainLayout>
+    element: <MainLayout><ProtectedFeature message="Sign in to browse and apply for jobs"><Browse /></ProtectedFeature></MainLayout>
   },
   {
     path: '/resume-builder',

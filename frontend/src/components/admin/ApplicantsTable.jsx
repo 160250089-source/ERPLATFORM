@@ -11,8 +11,13 @@ import { Badge } from '../ui/badge';
 
 const shortlistingStatus = ["Accepted", "Rejected", "Pending"];
 
-const ApplicantsTable = () => {
+const ApplicantsTable = ({ applicants: applicantsProp }) => {
     const { applicants } = useSelector(store => store.application);
+    const applicationRows = Array.isArray(applicantsProp)
+        ? applicantsProp
+        : Array.isArray(applicants)
+            ? applicants
+            : [];
 
     const statusHandler = async (status, id) => {
         try {
@@ -27,7 +32,7 @@ const ApplicantsTable = () => {
     }
 
     return (
-        <motion.div 
+        <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -47,8 +52,8 @@ const ApplicantsTable = () => {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {applicants && applicants?.applications?.map((item, index) => (
-                        <motion.tr 
+                    {applicationRows.length > 0 ? applicationRows.map((item, index) => (
+                        <motion.tr
                             key={item._id}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -94,10 +99,10 @@ const ApplicantsTable = () => {
                                     </PopoverTrigger>
                                     <PopoverContent className="w-40">
                                         {shortlistingStatus.map((status, index) => (
-                                            <motion.div 
+                                            <motion.div
                                                 key={index}
                                                 whileHover={{ backgroundColor: "#f3f4f6" }}
-                                                onClick={() => statusHandler(status, item?._id)} 
+                                                onClick={() => statusHandler(status, item?._id)}
                                                 className='flex w-full items-center my-2 cursor-pointer p-2 rounded'
                                             >
                                                 <span>{status}</span>
@@ -107,7 +112,13 @@ const ApplicantsTable = () => {
                                 </Popover>
                             </TableCell>
                         </motion.tr>
-                    ))}
+                    )) : (
+                        <TableRow>
+                            <TableCell colSpan={7} className="text-center text-gray-500 py-10">
+                                No applicants found.
+                            </TableCell>
+                        </TableRow>
+                    )}
                 </TableBody>
             </Table>
         </motion.div>

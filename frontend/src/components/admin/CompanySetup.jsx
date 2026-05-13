@@ -21,7 +21,7 @@ const CompanySetup = () => {
         location: "",
         file: null
     });
-    const {singleCompany} = useSelector(store=>store.company);
+    const { singleCompany } = useSelector(store => store.company);
     const [loading, setLoading] = useState(false);
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
@@ -71,7 +71,7 @@ const CompanySetup = () => {
             });
             if (res.data.success) {
                 toast.success(res.data.message);
-                navigate("/admin/companies");
+                navigate("/admin");
             }
         } catch (error) {
             console.log(error);
@@ -89,7 +89,7 @@ const CompanySetup = () => {
             location: singleCompany.location || "",
             file: singleCompany.file || null
         })
-    },[singleCompany]);
+    }, [singleCompany]);
 
     return (
         <div className='bg-mesh-light dark:bg-mesh-dark min-h-screen pt-16'>
@@ -113,7 +113,7 @@ const CompanySetup = () => {
                         <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
                             <div className="space-y-2">
                                 <Label htmlFor="name" className="text-sm font-semibold text-gray-700 dark:text-gray-300">Company Name</Label>
-                                <Input 
+                                <Input
                                     id="name"
                                     className='bg-white/50 dark:bg-gray-900/50 rounded-xl focus:ring-red-500 border-gray-200 dark:border-white/10 dark:text-white'
                                     type="text"
