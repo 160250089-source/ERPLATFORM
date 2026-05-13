@@ -87,7 +87,7 @@ const PostJob = () => {
             
             const res = await axios({
                 method: 'post',
-                url: `${JOB_API_END_POINT}/v1/job/post`,
+                url: `${JOB_API_END_POINT}/post`,
                 data: formattedInput,
                 headers: {
                     'Content-Type': 'application/json'
